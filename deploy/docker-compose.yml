@@ -1,0 +1,17 @@
+services:
+    web:
+        image: loradurst/bgapp-web
+        ports:
+            - 80:80
+        volumes:
+            - "/home/jenkins/workspace/Pipeline-BGApp/web:/var/www/html:ro"
+        networks:
+            - appnet
+    db:
+        image: loradurst/bgapp-db
+        networks:
+            - appnet
+        environment:
+            MYSQL_ROOT_PASSWORD: "12345"
+networks:
+    appnet:
